@@ -6,18 +6,7 @@
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-Automated%20Testing-brightgreen?logo=githubactions&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-Newman%20Run-2088FF?logo=githubactions&logoColor=white)
 
-![Status](https://img.shields.io/badge/Status-Completed-success)
-![API Testing](https://img.shields.io/badge/API%20Testing-Automation-green)
-![Coverage](https://img.shields.io/badge/Test%20Coverage-100%25-brightgreen)
-![Assertions](https://img.shields.io/badge/Assertions-44%20Passed-success)
 
-
-![Postman](https://img.shields.io/badge/Postman-API%20Testing-orange?logo=postman&logoColor=white)
-![Newman](https://img.shields.io/badge/Newman-CLI%20Runner-blue)
-![JavaScript](https://img.shields.io/badge/JavaScript-Test%20Scripts-yellow?logo=javascript&logoColor=black)
-![CI/CD](https://img.shields.io/badge/CI%2FCD-Automated%20Testing-brightgreen?logo=githubactions&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Completed-success)
-![Coverage](https://img.shields.io/badge/Test%20Coverage-100%25-brightgreen)
 
 
 🚀 Overview
@@ -41,7 +30,7 @@ Professional HTML reporting
 ✔ Full CRUD Workflow Covered
 ✔ Zero Failed Tests in Final Execution
 
-
+📁 Project Structure
 Restful-Booker-API-Testing/
 │
 ├── collection/
@@ -55,7 +44,6 @@ Restful-Booker-API-Testing/
 │   └── Detailed_Report.html
 │
 └── README.md
-
 🧪 Features
 🔐 Authentication
 Token generation using /auth
@@ -148,8 +136,7 @@ newman run "Restful Booker API Testing.postman_collection.json" \
 API Automation from scratch
 Postman collection design
 Newman CLI execution
-Real-world API chaining
-Debugging API failures
+API chaining & debugging
 Writing robust test assertions
 Generating QA-grade reports
 🔮 Future Improvements
