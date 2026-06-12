@@ -1,0 +1,1142 @@
+{
+  "info": {
+    "_postman_id": "2bb7afcc-10be-4650-bdb5-f1ea9f179b6b",
+    "name": "Restful Booker API Testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55341267",
+    "_collection_link": "https://go.postman.co/collection/55341267-2bb7afcc-10be-4650-bdb5-f1ea9f179b6b?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Create Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "// Save Token in Collection Variable\r",
+                  "pm.collectionVariables.set(\"token\", response.token);\r",
+                  "\r",
+                  "console.log(\"Token Saved:\", pm.collectionVariables.get(\"token\"));\r",
+                  "\r",
+                  "pm.test(\"Token generated\", function () {\r",
+                  "    pm.expect(response.token).to.exist;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/auth",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "auth"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Booking Retrieval",
+      "item": [
+        {
+          "name": "Get Booking IDs",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 2 sec\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseURL}}/booking",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "booking"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Booking by Name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 2 sec\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseURL}}/booking?firstname=Akash141&lastname=Roy",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "booking"
+              ],
+              "query": [
+                {
+                  "key": "firstname",
+                  "value": "Akash141"
+                },
+                {
+                  "key": "lastname",
+                  "value": "Roy"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Booking by Check-in & Check-out",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 2 sec\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseURL}}/booking?checkin=2022-12-26&checkout=2023-07-22",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "booking"
+              ],
+              "query": [
+                {
+                  "key": "checkin",
+                  "value": "2022-12-26"
+                },
+                {
+                  "key": "checkout",
+                  "value": "2023-07-22"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Update Booking Flow",
+      "item": [
+        {
+          "name": "Create Booking for Update",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "// Save bookingid in Environment Variable\r",
+                  "pm.environment.set(\"updateBookingId\", response.bookingid);\r",
+                  "\r",
+                  "console.log(\"Booking ID =\", pm.environment.get(\"updateBookingId\"));\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 2 sec\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "let today = new Date().toISOString().split(\"T\")[0];\r",
+                  "\r",
+                  "pm.environment.set(\r",
+                  "    \"checkinDate\",\r",
+                  "    today\r",
+                  ");\r",
+                  "\r",
+                  "let randomNum = Math.floor(Math.random() * 1000);\r",
+                  "\r",
+                  "pm.environment.set(\r",
+                  "    \"firstname\",\r",
+                  "    \"Akash\" + randomNum\r",
+                  ");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstname\": \"{{firstname}}\",\r\n    \"lastname\": \"Roy\",\r\n    \"totalprice\": 500,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"{{checkinDate}}\",\r\n        \"checkout\": \"2026-06-20\"\r\n    },\r\n    \"additionalneeds\": \"Breakfast\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/booking",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "booking"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Token for Update",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\"updateToken\", response.token);\r",
+                  "\r",
+                  "console.log(\"Update Token =\", pm.environment.get(\"updateToken\"));"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/auth",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "auth"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Booking",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 2 sec\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "// Save updated firstname and lastname\r",
+                  "pm.environment.set(\"updatedFirstname\", response.firstname);\r",
+                  "pm.environment.set(\"updatedLastname\", response.lastname);\r",
+                  "\r",
+                  "console.log(\"Updated Firstname =\", pm.environment.get(\"updatedFirstname\"));\r",
+                  "console.log(\"Updated Lastname =\", pm.environment.get(\"updatedLastname\"));\r",
+                  "\r",
+                  "pm.test(\"Firstname updated\", function () {\r",
+                  "    pm.expect(response.firstname).to.eql(\"Akash Updated\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Lastname updated\", function () {\r",
+                  "    pm.expect(response.lastname).to.eql(\"Roy\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "token={{updateToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"firstname\": \"Akash Updated\", \"lastname\": \"Roy\", \"totalprice\": 1000, \"depositpaid\": true, \"bookingdates\": { \"checkin\": \"2026-07-01\", \"checkout\": \"2026-07-10\" }, \"additionalneeds\": \"Lunch\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/booking/{{updateBookingId}}",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "booking",
+                "{{updateBookingId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify Update by Name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 2 sec\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseURL}}/booking?firstname={{updatedFirstname}}&lastname={{updatedLastname}}",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "booking"
+              ],
+              "query": [
+                {
+                  "key": "firstname",
+                  "value": "{{updatedFirstname}}"
+                },
+                {
+                  "key": "lastname",
+                  "value": "{{updatedLastname}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Partial Update Flow",
+      "item": [
+        {
+          "name": "Create Booking for Partial Update",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "// Save bookingid in Environment Variable\r",
+                  "pm.environment.set(\"partialBookingId\", response.bookingid);\r",
+                  "\r",
+                  "console.log(\r",
+                  "    \"Partial Booking ID =\",\r",
+                  "    pm.environment.get(\"partialBookingId\")\r",
+                  ");\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 2 sec\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "let price = Math.floor(Math.random() * 5000) + 500;\r",
+                  "\r",
+                  "pm.environment.set(\"price\", price);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstname\": \"Tawhid\",\r\n    \"lastname\": \"Khan\",\r\n    \"totalprice\": \"{{price}}\",\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2026-06-15\",\r\n        \"checkout\": \"2026-06-20\"\r\n    },\r\n    \"additionalneeds\": \"Breakfast\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/booking",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "booking"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Token for Partial Update",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\"partialToken\", response.token);\r",
+                  "\r",
+                  "console.log(\r",
+                  "    \"Partial Token =\",\r",
+                  "    pm.environment.get(\"partialToken\")\r",
+                  ");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/auth",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "auth"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Partial Update Booking",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Firstname updated\", function () {\r",
+                  "    pm.expect(response.firstname).to.eql(\"James\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Lastname updated\", function () {\r",
+                  "    pm.expect(response.lastname).to.eql(\"Brown\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Total price updated\", function () {\r",
+                  "    pm.expect(response.totalprice).to.eql(6969);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "token={{partialToken}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\": 6969\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/booking/{{partialBookingId}}",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "booking",
+                "{{partialBookingId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify Partial Update by Name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 2 sec\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 2 sec\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseURL}}/booking?firstname=James&lastname=Brown",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "booking"
+              ],
+              "query": [
+                {
+                  "key": "firstname",
+                  "value": "James"
+                },
+                {
+                  "key": "lastname",
+                  "value": "Brown"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Delete Booking Flow",
+      "item": [
+        {
+          "name": "Create Booking for Delete",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "// Save Delete Booking ID\r",
+                  "pm.environment.set(\"deleteBookingId\", response.bookingid);\r",
+                  "\r",
+                  "console.log(\r",
+                  "    \"Delete Booking ID =\",\r",
+                  "    pm.environment.get(\"deleteBookingId\")\r",
+                  ");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.environment.set(\r",
+                  "    \"firstname\",\r",
+                  "    \"Akash\" + Math.floor(Math.random() * 1000)\r",
+                  ");\r",
+                  "\r",
+                  "pm.environment.set(\r",
+                  "    \"price\",\r",
+                  "    Math.floor(Math.random() * 5000)\r",
+                  ");\r",
+                  "\r",
+                  "pm.environment.set(\r",
+                  "    \"depositpaid\",\r",
+                  "    Math.random() > 0.5\r",
+                  ");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstname\": \"{{firstname}}\",\r\n    \"lastname\": \"Roy\",\r\n    \"totalprice\": {{price}},\r\n    \"depositpaid\": {{depositpaid}},\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2026-07-01\",\r\n        \"checkout\": \"2026-07-10\"\r\n    },\r\n    \"additionalneeds\": \"Lunch\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/booking",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "booking"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Token for Delete",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "// Save Delete Token\r",
+                  "pm.environment.set(\"deleteToken\", response.token);\r",
+                  "\r",
+                  "console.log(\r",
+                  "    \"Delete Token =\",\r",
+                  "    pm.environment.get(\"deleteToken\")\r",
+                  ");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/auth",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "auth"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Booking",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 2 sec\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "token={{deleteToken}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BaseURL}}/booking/{{deleteBookingId}}",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "booking",
+                "{{deleteBookingId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify Deletion",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Response time is less than 2 sec\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.not.be.empty;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BaseURL}}/booking/{{deleteBookingId}}",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "booking",
+                "{{deleteBookingId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Ping",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BaseURL}}/ping",
+              "host": [
+                "{{BaseURL}}"
+              ],
+              "path": [
+                "ping"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BaseURL",
+      "value": ""
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "bookingid",
+      "value": ""
+    },
+    {
+      "key": "updateBookingId",
+      "value": ""
+    },
+    {
+      "key": "updateToken",
+      "value": ""
+    },
+    {
+      "key": "checkinDate",
+      "value": ""
+    },
+    {
+      "key": "firstname",
+      "value": ""
+    },
+    {
+      "key": "price",
+      "value": ""
+    },
+    {
+      "key": "depositpaid",
+      "value": ""
+    },
+    {
+      "key": "partialToken",
+      "value": ""
+    },
+    {
+      "key": "partialBookingId",
+      "value": ""
+    },
+    {
+      "key": "updatedFirstname",
+      "value": ""
+    },
+    {
+      "key": "updatedLastname",
+      "value": ""
+    },
+    {
+      "key": "deleteBookingId",
+      "value": ""
+    },
+    {
+      "key": "deleteToken",
+      "value": ""
+    }
+  ]
+}
